@@ -16,11 +16,9 @@ export class App extends Component {
   addNewURL = (newURL) => {
     postUrls(newURL)
     .then(data => {
-      console.log("POST RESPONSE=====", data)
       this.setState({ urls: [...this.state.urls, data]})
     })
     .catch((err) => {
-      console.log(err);
       this.setState({ errors: err })
     })
   }
@@ -28,7 +26,6 @@ export class App extends Component {
   componentDidMount() {
     getUrls()
       .then((data) => {
-        console.log("FETCH GET DATA====", data);
         this.setState({ urls: data.urls });
       })
       .catch((err) => {
