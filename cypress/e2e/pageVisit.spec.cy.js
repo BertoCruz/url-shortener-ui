@@ -20,14 +20,13 @@ describe(`When a user visit's the page`, () => {
 
   it('they can view the Form with the proper inputs', () => {
     cy.get('[placeholder="Title..."]').should("be.visible")
-    cy.get('[placeholder="Title..."]').should("have.value", 'Title...')
     cy.get('[placeholder="URL to Shorten..."]').should("be.visible")
 
   })
 
   it('When a user fills out the form, the information is reflected in the input fields', () => {
-    cy.get('[placeholder="Title..."]').type("Sample Title")
+    cy.get('[placeholder="Title..."]').type("Sample Title").should("have.value", "Sample Title")
     cy.get('[placeholder="URL to Shorten..."]').type("https://www.youtube.com/results?search_query=la+historia+completa+de+rock+mexicano+en+los+90s")
-
+    .should("have.value", "https://www.youtube.com/results?search_query=la+historia+completa+de+rock+mexicano+en+los+90s")
   })
 })
